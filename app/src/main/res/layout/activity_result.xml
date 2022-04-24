@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ig_bg"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="16dp"
+    tools:context=".ResultActivity">
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sans_serif_bld_flf"
+        android:gravity="center"
+        android:text="@string/result"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/trophy_image"
+        android:src="@drawable/ic_trophy" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/sans_serif_bld_flf"
+        android:gravity="center"
+        android:text="@string/hey_congrats"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/tv_win_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/sans_serif_bld_flf"
+        android:gravity="center"
+        android:text="@string/name"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/sans_serif"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        tools:text="Your Score 1 out of 10" />
+
+    <Button
+        android:id="@+id/btn_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/default_option_border_bg"
+        android:fontFamily="@font/sans_serif_bld_flf"
+        android:gravity="center"
+        android:text="@string/finish"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</LinearLayout>

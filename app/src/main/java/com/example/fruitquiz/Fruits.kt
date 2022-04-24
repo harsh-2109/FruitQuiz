@@ -4,9 +4,9 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
 data class Fruits(
-    val id:Int,
+    val id: Int,
     @DrawableRes
-    val image:Int,
+    val image: Int,
     @StringRes
     val question: Int,
     val option1: String,

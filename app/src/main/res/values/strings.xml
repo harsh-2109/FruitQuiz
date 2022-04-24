@@ -9,4 +9,8 @@
     <string name="option">option</string>
     <string name="submit">SUBMIT</string>
     <string name="_0_10">0/10</string>
+    <string name="result">Result</string>
+    <string name="finish">Finish</string>
+    <string name="hey_congrats">Hey, Congrats</string>
+    <string name="trophy_image">Trophy image</string>
 </resources>
