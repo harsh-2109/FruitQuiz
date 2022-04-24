@@ -24,6 +24,8 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
     private var mSelectedOption = 0
     private var currentQuestionCount = 1
     private var correctAnswersCount = 0
+    private val questions = Constant.getQuestions()
+    private lateinit var options: ArrayList<TextView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +50,7 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun loadData() {
-        with(Constant.getQuestions()[currentQuestionCount]) {
+        with(questions[currentQuestionCount - 1]) {
             tvQuestion.text = getString(question)
             ivFruitImage.setImageResource(image)
             progressBar.max = totalQuestionCounts
@@ -74,13 +76,50 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View?) {
-        when(view?.id){
-            R.id.tv_option_one -> selectedOptionItem(tvOptionOne,1)
-            R.id.tv_option_two -> selectedOptionItem(tvOptionTwo,2)
-            R.id.tv_option_three -> selectedOptionItem(tvOptionThree,3)
-            R.id.tv_option_four -> selectedOptionItem(tvOptionFour,4)
+        when (view?.id) {
+            R.id.tv_option_one -> selectedOptionItem(tvOptionOne, 1)
+            R.id.tv_option_two -> selectedOptionItem(tvOptionTwo, 2)
+            R.id.tv_option_three -> selectedOptionItem(tvOptionThree, 3)
+            R.id.tv_option_four -> selectedOptionItem(tvOptionFour, 4)
             R.id.btn_submit -> {
-                Toast.makeText(this,"Needs to implement",Toast.LENGTH_SHORT).show()
+                if(mSelectedOption == 0){
+                    currentQuestionCount++
+                    when{
+                        currentQuestionCount <= questions.count()-1 -> loadData()
+                    }
+                } else {
+                    Toast.makeText(this, "Needs to implement", Toast.LENGTH_SHORT).show()
+                    if (mSelectedOption != questions[currentQuestionCount - 1].correctOption)
+                        answerView(mSelectedOption, R.drawable.wrong_option_border_bg)
+                    else
+                        correctAnswersCount++
+                    answerView(
+                        questions[currentQuestionCount - 1].correctOption,
+                        R.drawable.correct_option_border_bg
+                    )
+                    mSelectedOption = 0
+                }
+            }
+        }
+    }
+
+    private fun answerView(selectedOption: Int, drawable: Int) {
+        when (selectedOption) {
+            1 -> {
+                options[selectedOption - 1].background =
+                    AppCompatResources.getDrawable(this, drawable)
+            }
+            2 -> {
+                options[selectedOption - 1].background =
+                    AppCompatResources.getDrawable(this, drawable)
+            }
+            3 -> {
+                options[selectedOption - 1].background =
+                    AppCompatResources.getDrawable(this, drawable)
+            }
+            4 -> {
+                options[selectedOption - 1].background =
+                    AppCompatResources.getDrawable(this, drawable)
             }
         }
     }
@@ -91,22 +130,22 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
         defaultOptionViewStyle()
 
         view.background = AppCompatResources.getDrawable(
-            this,R.drawable.selected_option_border_bg
+            this, R.drawable.selected_option_border_bg
         )
-        view.setTypeface(view.typeface,Typeface.BOLD)
+        view.setTypeface(view.typeface, Typeface.BOLD)
     }
 
     private fun defaultOptionViewStyle() {
-        val options = ArrayList<TextView>()
+        options = ArrayList<TextView>()
 
         options.add(tvOptionOne)
         options.add(tvOptionTwo)
         options.add(tvOptionThree)
         options.add(tvOptionFour)
 
-        for(option in options){
+        for (option in options) {
             option.background = AppCompatResources.getDrawable(
-                this,R.drawable.default_option_border_bg
+                this, R.drawable.default_option_border_bg
             )
             option.typeface = Typeface.DEFAULT
         }
