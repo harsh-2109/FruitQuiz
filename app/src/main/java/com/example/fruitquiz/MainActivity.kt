@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra(Constant.USER_NAME, etUsername.text)
                 startActivity(intent)
                 finish()
+                // Activity Finished
             } else
                 Toast.makeText(this, "Please Enter your name", Toast.LENGTH_SHORT).show()
         }
