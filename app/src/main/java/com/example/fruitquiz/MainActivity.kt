@@ -11,24 +11,24 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var etUsername:EditText
-    private lateinit var btnStart:Button
+    private lateinit var etUsername: EditText
+    private lateinit var btnStart: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        etUsername=findViewById(R.id.et_username)
-        btnStart=findViewById(R.id.btn_start)
+        etUsername = findViewById(R.id.et_username)
+        btnStart = findViewById(R.id.btn_start)
 
         btnStart.setOnClickListener {
-            if (etUsername.text.isNotEmpty()){
+            if (etUsername.text.isNotEmpty()) {
                 val intent = Intent(this, QuizQuestionActivity::class.java)
                 intent.putExtra(Constant.USER_NAME, etUsername.text)
                 startActivity(intent)
                 finish()
-            }
-            Toast.makeText(this, "Please Enter your name",Toast.LENGTH_SHORT).show()
+            } else
+                Toast.makeText(this, "Please Enter your name", Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -24,8 +24,8 @@ object Constant {
                 2,
                 R.drawable.pineapple,
                 R.string.question,
-                "Strawberry", "Sushi", "Swish", "Stawbarry",
-                1
+                "Strawberry", "Pineapple", "Swish", "Stawbarry",
+                2
             )
         )
         questionList.add(
@@ -33,7 +33,7 @@ object Constant {
                 3,
                 R.drawable.banana,
                 R.string.question,
-                "Strawberry", "Sushi", "Swish", "Stawbarry",
+                "Banana", "Sushi", "Swish", "Stawbarry",
                 1
             )
         )
@@ -42,8 +42,8 @@ object Constant {
                 4,
                 R.drawable.kiwi,
                 R.string.question,
-                "Strawberry", "Sushi", "Swish", "Stawbarry",
-                1
+                "Strawberry", "Sushi", "KiWi", "Stawbarry",
+                3
             )
         )
         questionList.add(
@@ -51,8 +51,8 @@ object Constant {
                 5,
                 R.drawable.melon,
                 R.string.question,
-                "Strawberry", "Sushi", "Swish", "Stawbarry",
-                1
+                "Strawberry", "Sushi", "Swish", "Watermelon",
+                4
             )
         )
         questionList.add(
@@ -60,8 +60,8 @@ object Constant {
                 6,
                 R.drawable.apple,
                 R.string.question,
-                "Strawberry", "Sushi", "Swish", "Stawbarry",
-                1
+                "Strawberry", "Apple", "Swish", "Stawbarry",
+                2
             )
         )
         questionList.add(
@@ -69,7 +69,7 @@ object Constant {
                 7,
                 R.drawable.pomo,
                 R.string.question,
-                "Strawberry", "Sushi", "Swish", "Stawbarry",
+                "Pomegranate", "Sushi", "Swish", "Stawbarry",
                 1
             )
         )

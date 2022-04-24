@@ -1,5 +1,6 @@
 package com.example.fruitquiz
 
+import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,6 +21,8 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var tvOptionFour: TextView
     private lateinit var btnSubmit: Button
 
+    private var mUsername: String? = null
+
     private var totalQuestionCounts = Constant.getQuestions().size
     private var mSelectedOption = 0
     private var currentQuestionCount = 1
@@ -30,6 +33,8 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_question)
+
+        mUsername = intent.getStringExtra(Constant.USER_NAME)
 
         //To assign all the widgets and values
         initial()
@@ -49,20 +54,6 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
         btnSubmit.setOnClickListener(this)
     }
 
-    private fun loadData() {
-        with(questions[currentQuestionCount - 1]) {
-            tvQuestion.text = getString(question)
-            ivFruitImage.setImageResource(image)
-            progressBar.max = totalQuestionCounts
-            tvProgressCounts.text = "$currentQuestionCount/$totalQuestionCounts"
-            tvOptionOne.text = option1
-            tvOptionTwo.text = option2
-            tvOptionThree.text = option3
-            tvOptionFour.text = option4
-            progressBar.progress = currentQuestionCount
-        }
-    }
-
     private fun initial() {
         tvQuestion = findViewById(R.id.tv_question)
         ivFruitImage = findViewById(R.id.iv_fruit_image)
@@ -75,6 +66,26 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
         btnSubmit = findViewById(R.id.btn_submit)
     }
 
+    private fun loadData() {
+        defaultOptionViewStyle()
+        with(questions[currentQuestionCount - 1]) {
+            tvQuestion.text = getString(question)
+            ivFruitImage.setImageResource(image)
+            progressBar.max = totalQuestionCounts
+            tvProgressCounts.text = "$currentQuestionCount/$totalQuestionCounts"
+            tvOptionOne.text = option1
+            tvOptionTwo.text = option2
+            tvOptionThree.text = option3
+            tvOptionFour.text = option4
+            progressBar.progress = currentQuestionCount
+        }
+        btnSubmit.text =
+            if (currentQuestionCount == questions.size)
+                "Finish"
+            else
+                "Submit"
+    }
+
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.tv_option_one -> selectedOptionItem(tvOptionOne, 1)
@@ -82,13 +93,20 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
             R.id.tv_option_three -> selectedOptionItem(tvOptionThree, 3)
             R.id.tv_option_four -> selectedOptionItem(tvOptionFour, 4)
             R.id.btn_submit -> {
-                if(mSelectedOption == 0){
+                if (mSelectedOption == 0) {
                     currentQuestionCount++
-                    when{
-                        currentQuestionCount <= questions.count()-1 -> loadData()
+                    when {
+                        currentQuestionCount <= questions.size -> loadData()
+                        else -> {
+                            val intent = Intent(this, ResultActivity::class.java)
+                            intent.putExtra(Constant.USER_NAME, mUsername)
+                            intent.putExtra(Constant.CORRECT_ANSWERS, correctAnswersCount)
+                            intent.putExtra(Constant.TOTAL_QUESTIONS, questions.size)
+                            startActivity(intent)
+                            finish()
+                        }
                     }
                 } else {
-                    Toast.makeText(this, "Needs to implement", Toast.LENGTH_SHORT).show()
                     if (mSelectedOption != questions[currentQuestionCount - 1].correctOption)
                         answerView(mSelectedOption, R.drawable.wrong_option_border_bg)
                     else
@@ -97,6 +115,12 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
                         questions[currentQuestionCount - 1].correctOption,
                         R.drawable.correct_option_border_bg
                     )
+                    btnSubmit.text =
+                        if (currentQuestionCount == questions.size)
+                            "FINISH"
+                        else
+                            "Go To Next Question"
+
                     mSelectedOption = 0
                 }
             }
