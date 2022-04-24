@@ -2,12 +2,14 @@ package com.example.fruitquiz
 
 import android.content.Intent
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.appcompat.widget.AppCompatDrawableManager
 
 class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -36,14 +38,13 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
 
         mUsername = intent.getStringExtra(Constant.USER_NAME)
 
-        //To assign all the widgets and values
+        // To assign all the widgets and values
         initial()
 
         // To load initial data
         loadData()
 
         clickEvent()
-
     }
 
     private fun clickEvent() {
@@ -160,7 +161,7 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun defaultOptionViewStyle() {
-        options = ArrayList<TextView>()
+        options = ArrayList()
 
         options.add(tvOptionOne)
         options.add(tvOptionTwo)
