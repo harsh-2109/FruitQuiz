@@ -26,4 +26,7 @@ jobs:
       run: ./gradlew build
     
     - name: Super-Linter
-      uses: github/super-linter@v4.9.2
+      uses: github/super-linter@v4.9.2 
+      
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
