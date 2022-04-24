@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".QuizQuestionActivity">
+
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sans_serif_bld_flf"
+        android:gravity="center"
+        android:text="@string/question"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:id="@+id/iv_fruit_image"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        tools:src="@drawable/apple" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:weightSum="10">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:progress="0"
+            android:layout_height="match_parent"
+            android:layout_weight="9" />
+
+        <TextView
+            android:id="@+id/tv_progress_counts"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/_0_10" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_option_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/default_option_border_bg"
+        android:fontFamily="@font/sans_serif_book_flf"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/option"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_option_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/default_option_border_bg"
+        android:fontFamily="@font/sans_serif_book_flf"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/option"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_option_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/default_option_border_bg"
+        android:fontFamily="@font/sans_serif_book_flf"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/option"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_option_four"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/default_option_border_bg"
+        android:fontFamily="@font/sans_serif_book_flf"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/option"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:background="@drawable/default_option_border_bg"
+        android:fontFamily="@font/sans_serif_bld_flf"
+        android:gravity="center"
+        android:text="@string/submit"
+        android:textColor="@color/white" />
+
+</LinearLayout>
